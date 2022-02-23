@@ -46,3 +46,58 @@ FROM `departments`
 SELECT * 
 FROM `teachers`
 WHERE `phone` IS NULL;
+
+-- Selezionare tutti gli studenti iscritti al corso di laurea in economia
+
+SELECT * 
+FROM `degrees`
+JOIN `students`
+	ON `degrees`.`id`= `students`.`degree_id`
+   WHERE `degrees`.`name` LIKE '% economia'
+
+-- Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
+
+SELECT * 
+FROM `departments`
+JOIN `degrees`
+	ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
+
+-- Selezionare tutti i corsi in cui insegna Fulvio Amato
+
+SELECT * 
+FROM `teachers`
+JOIN `course_teacher`
+	ON `teachers`.`id` = `course_teacher`.`teacher_id`
+WHERE `teachers`.`id` = 44
+
+-- Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il
+-- relativo dipartimento, in ordine alfabetico per cognome e nome
+
+SELECT * 
+FROM `departments`
+JOIN `degrees`
+	ON `departments`.`id` = `degrees`.`department_id`
+JOIN `students`
+	ON `degrees`.`id` = `students`.`degree_id`
+    ORDER BY `students`.`name`
+
+-- Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+SELECT * 
+FROM `degrees`
+JOIN `course_teacher`
+	ON `degrees`.`id` = `course_teacher`.`course_id` AND `teacher_id`
+
+-- Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+??
+
+
+
+-- Contare quanti iscritti ci sono stati ogni anno
+
+
+
+-- Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
